@@ -1,0 +1,27 @@
+{
+  "name": "incois-data-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/esprima": "^4.0.6",
+    "@types/estraverse": "^5.1.7",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/node": "^22.5.2",
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "esprima": "^4.0.1",
+    "estraverse": "^5.3.0",
+    "fs": "0.0.1-security"
+  }
+}
