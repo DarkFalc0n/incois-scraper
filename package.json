@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/esprima": "^4.0.6",
     "@types/estraverse": "^5.1.7",
+    "@types/papaparse": "^5.3.14",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
@@ -22,6 +23,7 @@
     "cheerio": "^1.0.0",
     "esprima": "^4.0.1",
     "estraverse": "^5.3.0",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "papaparse": "^5.4.1"
   }
 }
