@@ -12,7 +12,14 @@ const handleUrls = (urls: string[]) => {
     scrapeUrl(url).then((data) => {
       const parsedData = JSON.parse(data);
       const csv = parseToCSV(parsedData);
-      fs.writeFileSync("out/output.csv", csv);
+      const timestamp = new Date()
+        .toISOString()
+        .slice(0, 19);
+      fs.mkdirSync("out", { recursive: true });
+      fs.writeFileSync(
+        `out/output-[${timestamp}].csv`,
+        csv
+      );
     });
   });
 };
