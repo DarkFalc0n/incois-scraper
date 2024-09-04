@@ -1,27 +1,30 @@
+import input from "./urls.json";
 import fs from "fs";
 import { scrapeUrl } from "./scraper";
 import { parseToCSV } from "./parseToCSV";
 
-const urls = fs
-  .readFileSync("src/urls.txt", "utf-8")
-  .split("\n");
+const getTimeStamp = () => {
+  const IST = new Date();
+  IST.setHours(IST.getHours() + 5);
+  IST.setMinutes(IST.getMinutes() + 30);
+  return IST.toISOString().replace("T", ".").slice(0, -1);
+};
 
-const handleUrls = (urls: string[]) => {
-  urls.forEach((url) => {
-    console.log("Scraping URL: ", url);
-    scrapeUrl(url).then((data) => {
-      const parsedData = JSON.parse(data);
-      const csv = parseToCSV(parsedData);
-      const timestamp = new Date()
-        .toISOString()
-        .slice(0, 19);
-      fs.mkdirSync("out", { recursive: true });
-      fs.writeFileSync(
-        `out/output-[${timestamp}].csv`,
-        csv
-      );
-    });
+const runScraper = ({
+  locations,
+}: {
+  locations: string[];
+}) => {
+  locations.forEach(async (location) => {
+    const url = `https://incois.gov.in/portal/datainfo/wrb_data_stock.jsp?buoy=${location}&parameter=hm0`;
+    console.log("Scraping data for:", location);
+    const data = await scrapeUrl(url);
+    const csvBody = parseToCSV(data);
+    const timestamp = getTimeStamp();
+    const csvTitle = `${location}.${timestamp}.csv`;
+    fs.mkdirSync("out", { recursive: true });
+    fs.writeFileSync(`out/${csvTitle}`, csvBody);
   });
 };
 
-handleUrls(urls);
+runScraper(input);

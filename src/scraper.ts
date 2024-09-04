@@ -1,7 +1,9 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-export async function scrapeUrl(url: string) {
+export async function scrapeUrl(
+  url: string
+): Promise<string[][]> {
   const response = await axios.get(url);
   const $ = cheerio.load(response.data);
   const scriptElem = [...$("body script")].find((_, i) => {
@@ -11,7 +13,6 @@ export async function scrapeUrl(url: string) {
   const data = $(scriptElem)
     .text()
     .match(/\[\[.*\]\]/gm) as Array<string>;
-  console.log(data[0]);
 
-  return data[0];
+  return JSON.parse(data[0]);
 }
