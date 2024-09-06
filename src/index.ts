@@ -20,7 +20,7 @@ const runScraper = ({
     console.log("Scraping data for:", location);
     const data = await scrapeUrl(url);
     const csvBody = parseToCSV(data);
-    const timestamp = getTimeStamp();
+    const timestamp = getTimeStamp().replace(/:/g, "-");
     const csvTitle = `${location}.${timestamp}.csv`;
     fs.mkdirSync("out", { recursive: true });
     fs.writeFileSync(`out/${csvTitle}`, csvBody);
