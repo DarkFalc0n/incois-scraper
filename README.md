@@ -1,17 +1,19 @@
-# INCOIS BUOY DATA SCRAPER
+## INCOIS BUOY DATA SCRAPER
+
+---
 
 ### Setup:
 
-1. `git clone https://github.com/DarkFalc0n/incois-scraper.git`
-2. `npm i`
+```sh
+git clone https://github.com/DarkFalc0n/incois-scraper.git
+npm install
+```
 
 ### Usage:
 
-- List down the locations inside `./src/urls.json` file.
-- Run the script: `npm run start`
+- List down the locations inside `input.json` file.
+- Run the script: `npm run scrape`.
 
-The output file be generated inside `./out` folder.
+Data will be generated inside `./data` folder. Each sub-directory inside is a parameter.
 
-File Name: {location}.{yyyy-mm-dd}.{hh:mm:ss:ms}.csv
-
-- Run `npm run clean` script to delete generated outputs.
+File Name Format: {location}.{yyyy-mm-dd}.{hh:mm:ss:ms}.csv
