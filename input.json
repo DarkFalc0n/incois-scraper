@@ -1,0 +1,8 @@
+{
+  "locations": ["Vizag", "Gopalpur"],
+  "params": [
+    { "id": "hm0", "name": "Significant Wave Height" },
+    { "id": "dirp", "name": "Peak Direction" },
+    { "id": "t1", "name": "Mean Period" }
+  ]
+}
